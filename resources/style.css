@@ -1,0 +1,593 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+:root{
+    --act-1-color:rgb(255, 33, 33);
+    --act-2-color:rgb(68, 255, 68);
+    --act-3-color:rgb(69, 69, 255);
+    --act-4-color:rgb(255, 255, 74);
+    --act-5-color:rgb(66, 255, 255);
+    --act-6-color:rgb(207, 1, 207);
+    --act-7-color:rgb(93, 46, 46);
+    --act-8-color:rgb(4, 59, 4);
+    --act-w-color:rgb(23, 23, 61);
+}
+.done{
+    text-decoration: line-through;
+    color: #145319;
+}
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family:'Muli','sans serif';
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{
+    width: 2px;
+    background-color:rgba(120,120,120,0.25);
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.25);
+    border-radius: 10px;
+}
+
+.container{
+    height: 200vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 800px;
+    background: linear-gradient(to right, #a3f0c7, #e5de82);
+    animation: changeBackground 20s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+}
+
+@keyframes changeBackground {
+    0% {
+        background-position: 100% 0;
+      }
+      50% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 0;
+      }
+}
+
+.scheduler-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.day{
+    display: flex;
+    flex-direction: column;
+}
+
+.activities{
+    width: 90%;
+    height: 20%;
+}
+
+.other-stuff{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+}
+.weekly-todo-section{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list-1, .todo-list-2{
+    height: 100%;
+    width: 50%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: #333;
+    font-size: 17px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.goal{
+    height: 33.3%;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px dashed #333;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.goal button{
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: white;
+    background: linear-gradient(to right, #141414, #353535);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    height: 35px;
+    transition: height 0.2s ease-in-out, background-color 0.3s ease-in;
+}
+
+.goal button:enabled:hover{
+    height: 45px;
+    transition: height 0.3s ease-in-out, background-color 0.3s ease-in;
+    background-color: #777;
+    border-bottom: 2px solid #59a17b;
+    border-top: 2px solid #bdb75e;
+    cursor: pointer;
+}
+
+.goal button:disabled:hover{
+    cursor: not-allowed;
+}
+
+.goal button:disabled{
+    background: linear-gradient(to right, #141414, #1a1a1a);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    color: #777;
+}
+
+.goal:last-child{
+    border: none;
+}
+
+.todo-list-1{
+    border-right: 1px solid black;
+}
+
+.statistics-section{
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.activities-name{
+    flex: 1;
+    height: 100%;
+    color: white;
+}
+
+.chart{
+    flex: 3;
+    height: 100%;
+    color: white;
+}
+
+.activities-time{
+    flex: 1;
+    height: 100%;
+    color: white;
+}
+
+.row{
+    width: 100%;
+    height: 12.5%;
+    border-bottom: 2px solid black;
+    display: flex;
+}
+
+.column{
+    width: 7.69%;
+    height: 100%;
+    border-right: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-cells{
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    height: 90%;
+    border: 1px solid black;
+}
+
+.progress-cell{
+    width: 100%;
+    height: 50%;
+}
+
+.progress-cell:first-of-type{
+    border-bottom: 1px dashed black;
+}
+
+.date{
+    font-size: 7px;
+    color: #444;
+    padding: 3px;
+}
+
+span:focus{
+    outline: 0;
+    background: linear-gradient(to bottom, #222, #555);
+    border-bottom: 1px dashed #222;
+    border-top: 1px dashed #555;     
+    padding: 0 6px;
+    transition: padding 0.25s ease-in-out;
+    cursor: pointer;
+    color: white;
+}
+
+.activities{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 12px 0;
+    flex-wrap: wrap;
+}
+
+.edit-btn{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100px;
+    height: 30px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border: 0;
+    cursor: pointer;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #54f8a1, #c9be23);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+}
+
+.activities-labels{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.activities-labels label{
+    width: 25%;
+    height: 33%;
+}
+
+.act-1{
+    position: relative;
+}
+
+.act-1::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff2121;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-2{
+    position: relative;
+}
+
+.act-2::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #44ff44;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-3{
+    position: relative;
+}
+
+.act-3::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #4545ff;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-4{
+    position: relative;
+}
+
+.act-4::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #ffff4a;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-5{
+    position: relative;
+}
+
+.act-5::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #42ffff;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-6{
+    position: relative;
+}
+
+.act-6::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #cf01cf;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-7{
+    position: relative;
+}
+
+.act-7::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #5d2e2e;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.act-8{
+    position: relative;
+}
+
+.act-8::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #043b04;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.wasted{
+    position: relative;
+}
+
+.wasted::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color: #17173d;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;cursor: pointer;
+}
+
+.activities-name, .activities-time{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.acts-name-part{
+    width: 100%;
+    height: 11.112%;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.acts-name-part:last-of-type{
+    border: none;
+}
+
+.acts-chart-part{
+    width: 100%;
+    height: 11.112%;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 4px;
+}
+
+.acts-chart-part:last-of-type{
+    border: none;
+}
+
+.acts-time-part{
+    width: 100%;
+    height: 11.112%;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.acts-time-part:last-of-type{
+    border: none;
+}
+
+.activity-1-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #ff2121, #ff3535);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    border: 1px dashed white;
+    text-align: right;
+    color: white;
+}
+
+.activity-2-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #44ff44, #69ff69);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+    color: black;
+}
+
+.activity-3-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #4545ff, #5a5aff);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+    color: white;
+}
+
+.activity-4-par{
+    height: 70%;
+    width: 0%;
+    background-color: #ffff4a;
+    background: linear-gradient(to right, #ffff4a, #ffff71);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+    color: black;
+}
+
+.activity-5-par{
+    height: 70%;
+    width: 0%;
+    background-color: #42ffff;
+    background: linear-gradient(to right, #42ffff, #80fefe);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+    color: black;
+}
+
+.activity-6-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #cf01cf, #ac01ac);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+    color: black;
+}
+
+.activity-7-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #5d2e2e, #793e3e);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+}
+
+.activity-8-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #043b04, #035403);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+}
+
+.activity-w-par{
+    height: 70%;
+    width: 0%;
+    background: linear-gradient(to right, #17173d, #262665);
+    animation: changeBackground 5s linear infinite;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+    /*border: 1px dashed rgb(255, 255, 255);*/
+    text-align: right;
+}
+
+
